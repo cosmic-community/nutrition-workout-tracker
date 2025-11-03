@@ -5,6 +5,9 @@ import WorkoutsList from '@/components/WorkoutsList'
 import QuickActions from '@/components/QuickActions'
 import type { Meal } from '@/types'
 
+// Force dynamic rendering to avoid build-time API calls
+export const dynamic = 'force-dynamic'
+
 export default async function HomePage() {
   const meals = await getTodayMeals();
   const workouts = await getTodayWorkouts();

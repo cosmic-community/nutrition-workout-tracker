@@ -3,6 +3,9 @@ import MealCard from '@/components/MealCard'
 import Link from 'next/link'
 import type { Meal } from '@/types'
 
+// Force dynamic rendering to avoid build-time API calls
+export const dynamic = 'force-dynamic'
+
 export default async function MealsPage() {
   const meals = await getTodayMeals();
   

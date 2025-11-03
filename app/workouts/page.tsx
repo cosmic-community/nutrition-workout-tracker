@@ -1,6 +1,7 @@
 import { getTodayWorkouts } from '@/lib/cosmic'
 import WorkoutCard from '@/components/WorkoutCard'
 import Link from 'next/link'
+import type { Workout } from '@/types'
 
 export default async function WorkoutsPage() {
   const workouts = await getTodayWorkouts();
@@ -30,7 +31,7 @@ export default async function WorkoutsPage() {
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {workouts.map(workout => (
+          {workouts.map((workout: Workout) => (
             <WorkoutCard key={workout.id} workout={workout} />
           ))}
         </div>

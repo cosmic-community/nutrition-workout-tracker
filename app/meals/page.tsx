@@ -1,6 +1,7 @@
 import { getTodayMeals } from '@/lib/cosmic'
 import MealCard from '@/components/MealCard'
 import Link from 'next/link'
+import type { Meal } from '@/types'
 
 export default async function MealsPage() {
   const meals = await getTodayMeals();
@@ -30,7 +31,7 @@ export default async function MealsPage() {
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {meals.map(meal => (
+          {meals.map((meal: Meal) => (
             <MealCard key={meal.id} meal={meal} />
           ))}
         </div>

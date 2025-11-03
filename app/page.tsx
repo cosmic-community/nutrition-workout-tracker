@@ -3,6 +3,7 @@ import DashboardStats from '@/components/DashboardStats'
 import MealsList from '@/components/MealsList'
 import WorkoutsList from '@/components/WorkoutsList'
 import QuickActions from '@/components/QuickActions'
+import type { Meal } from '@/types'
 
 export default async function HomePage() {
   const meals = await getTodayMeals();
@@ -10,7 +11,7 @@ export default async function HomePage() {
   const goals = await getGoals();
   
   // Calculate daily totals from meals
-  const dailyTotals = meals.reduce((acc, meal) => {
+  const dailyTotals = meals.reduce((acc: { calories: number; protein: number; carbs: number; fats: number }, meal: Meal) => {
     return {
       calories: acc.calories + (meal.metadata?.calories || 0),
       protein: acc.protein + (meal.metadata?.protein || 0),

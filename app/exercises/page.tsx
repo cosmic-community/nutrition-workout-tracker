@@ -1,5 +1,6 @@
 import { getExercises } from '@/lib/cosmic'
 import ExerciseCard from '@/components/ExerciseCard'
+import type { Exercise } from '@/types'
 
 export default async function ExercisesPage() {
   const exercises = await getExercises();
@@ -21,7 +22,7 @@ export default async function ExercisesPage() {
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {exercises.map(exercise => (
+          {exercises.map((exercise: Exercise) => (
             <ExerciseCard key={exercise.id} exercise={exercise} />
           ))}
         </div>

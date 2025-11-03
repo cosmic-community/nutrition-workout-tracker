@@ -3,6 +3,9 @@ import WorkoutCard from '@/components/WorkoutCard'
 import Link from 'next/link'
 import type { Workout } from '@/types'
 
+// Force dynamic rendering to avoid build-time API calls
+export const dynamic = 'force-dynamic'
+
 export default async function WorkoutsPage() {
   const workouts = await getTodayWorkouts();
   
